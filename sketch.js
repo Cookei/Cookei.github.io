@@ -1,9 +1,42 @@
 /// <reference path="p5.global-mode.d.ts" />
-let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type
+let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type, instructions
 let state2 = "STANDBY"
 let txt = []
 let sixty = 60
 let pickedLibrary
+let scrollLoc
+let helpText = "あ　 い　 う　 え　 お\n"
+helpText += "か　 き　 く　 け　 こ\n"
+helpText += "さ　 し　 す　 せ　 そ\n"
+helpText += "た　 ち　 つ　 て　 と\n"
+helpText += "な　 に　 ぬ　 ね　 の\n"
+helpText += "は　 ひ　 ふ　 へ　 ほ\n"
+helpText += "ま　 み　 む　 め　 も\n"
+helpText += "や　 　　 ゆ　 　　 よ\n"
+helpText += "ら　 り　 る　 れ　 ろ\n"
+helpText += "わ　 　　 　　 　　 を\n"
+helpText += "ん    \n"
+helpText += "    \n"
+helpText += "・　 ・　 ・　 ・　 ・\n"
+helpText += "ア　 イ　 ウ　 エ　 オ\n"
+helpText += "カ　 キ　 ク　 ケ　 コ\n"
+helpText += "サ　 シ　 ス　 セ　 ソ\n"
+helpText += "タ　 チ　 ツ　 テ　 ト\n"
+helpText += "ナ　 ニ　 ヌ　 ネ　 ノ\n"
+helpText += "ハ　 ヒ　 フ　 ヘ　 ホ\n"
+helpText += "マ　 ミ　 ム　 メ　 モ\n"
+helpText += "ヤ　 　　 ユ　 　　 ヨ\n"
+helpText += "ラ　 リ　 ル　 レ　 ロ\n"
+helpText += "ワ　 　　 　　 　　 ヲ\n"
+helpText += "ン    "
+
+let helpTextA = "a\nka\nsa\nta\nna\nha\nma\nya\nra\nwa\nn\n\n\na\nka\nsa\nta\nna\nha\nma\nya\nra\nwa\nn"
+let helpTextI = "i\nki\nshi\nchi\nni\nhi\nmi\n\nri\n\n\n\n\ni\nki\nshi\nchi\nni\nhi\nmi\n\nri"
+let helpTextU = "u\nku\nshu\nchu\nnu\nhu/fu\nmu\nyu\nru\n\n\n\n\nu\nku\nshu\nchu\nnu\nhu/fu\nmu\nyu\nru"
+let helpTextE = "e\nke\nshe\nche\nne\nhe\nme\n\nre\n\n\n\n\ne\nke\nshe\nche\nne\nhe\nme\n\nre"
+let helpTextO = "o\nko\nso\nto\nno\nho\nmo\nyo\nro\nwo\n\n\n\no\nko\nso\nto\nno\nho\nmo\nyo\nro\nwo\n"
+
+let howToPlay = "Type the romaji that corrosponds \nto the Japanese characters in the \ngiven amount of time"
 
 let katakanaLibrary = {
     "ア": ["a"],
@@ -126,12 +159,29 @@ function setup() {
     minuteRecH.position(divWidth/2 - canvasW/2 + canvasW/7 + canvasW/38.4, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     minuteRecH.size(canvasW/7, canvasH/12)
     minuteRecH.mouseClicked(minuteRecButtonH)
+
+    instructions = createButton("Help")
+    instructions.position(divWidth/2 + canvasW/2 - canvasW/7, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    instructions.size(canvasW/7, canvasH/12)
+    instructions.mouseClicked(helpButton)
+
+    textAlign(CENTER)
+    textLeading(30)
+}
+
+function helpButton() {
+    if (state != "HELP") {
+        state = "HELP"
+        state2 = ""
+        scrollLoc = canvasH/11.375
+    }
 }
 
 function minuteRecButtonH() {
     if (state == "60SEC") {
         state2 = "STANDBY"
     }
+    state2 = "STANDBY"
     state = "60SEC"
     type = "HIRAGANA"
 }
@@ -140,6 +190,7 @@ function minuteRecButtonK() {
     if (state == "60SEC") {
         state2 = "STANDBY"
     }
+    state2 = "STANDBY"
     state = "60SEC"
     type = "KATAKANA"
 }
@@ -154,7 +205,6 @@ function draw() {
 
 
     if (state == "STARTUP") {
-        textAlign(CENTER)
         background(47)
         textSize(canvasW/4.3885)
         fill("#fffaff")
@@ -255,7 +305,62 @@ function draw() {
             type = ""
         }
     }
-    //13872
+    else if (state == "HELP") {
+        background("#faf0fc")
+        fill("#2e292e")
+        textSize(canvasH/13.65)
+        textAlign(LEFT)
+        text(helpText, canvasW/51.2, scrollLoc)
+
+        fill("#5e4b5a")
+        textSize(canvasH/30)
+        textLeading(canvasH/10.92)
+        text(helpTextA, canvasW/51.2 + canvasW/26, scrollLoc)
+
+        textLeading(canvasH/10.92)
+        text(helpTextI, canvasW/51.2 + canvasW/26 + canvasW/13.5, scrollLoc)
+
+        textLeading(canvasH/10.92)
+        text(helpTextU, canvasW/51.2 + canvasW/26 + ((canvasW/13.5) * 2) - canvasW/160, scrollLoc)
+
+        textLeading(canvasH/10.92)
+        text(helpTextE, canvasW/51.2 + canvasW/26 + ((canvasW/13.5) * 3) - canvasW/160, scrollLoc)
+
+        textLeading(canvasH/10.92)
+        text(helpTextO, canvasW/51.2 + canvasW/26 + ((canvasW/13.5) * 4) - canvasW/160, scrollLoc)
+
+        textLeading(canvasH/10.92)
+        text(howToPlay, canvasW/51.2 + canvasW/26 + ((canvasW/13.5) * 8.5), scrollLoc)
+        textAlign(CENTER)
+
+        if (keyIsDown(DOWN_ARROW)) {
+            scrollLoc -= canvasH/136.5
+        }
+        if (keyIsDown(UP_ARROW)) {
+            scrollLoc += canvasH/136.5
+        }
+        rectMode(CORNER)
+        noStroke()
+        fill("#d0b1e0")
+        rect(canvasW - canvasW/80, canvasH/100, canvasW/150, map(scrollLoc, canvasH/11.375, -canvasH/0.85, canvasH/95, canvasH - canvasH/50, true), 1.5)
+        rectMode(CENTER)
+
+        scrollLoc = constrain(scrollLoc, -canvasH/0.85, canvasH/11.375)
+
+    }
+}
+
+function mouseWheel() {
+    if (state == "HELP") {
+        if (event.deltaY > 0) {
+            scrollLoc -= canvasH/15
+            scrollLoc = constrain(scrollLoc, -canvasH/0.85, canvasH/11.375)
+        }
+        else if (event.deltaY < 0) {
+            scrollLoc += canvasH/15
+            scrollLoc = constrain(scrollLoc, -canvasH/0.85, canvasH/11.375)
+        }
+    }
 }
 
 function keyTyped() {
@@ -306,6 +411,7 @@ function mouseClicked() {
 }
 
 function windowResized() {
+    let r = scrollLoc/(canvasH/11.375 + canvasH/0.85)
     divMain = document.getElementById("divMain")
     divWidth = divMain.clientWidth
     divHeight = divMain.clientHeight
@@ -319,4 +425,9 @@ function windowResized() {
 
     minuteRecH.position(divWidth/2 - canvasW/2 + canvasW/7 + canvasW/38.4, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     minuteRecH.size(canvasW/7, canvasH/12)
+    
+    instructions.position(divWidth/2 + canvasW/2 - canvasW/7, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    instructions.size(canvasW/7, canvasH/12)
+
+    scrollLoc = (canvasH/11.375 + canvasH/0.85) * r
 }

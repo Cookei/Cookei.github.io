@@ -1,4 +1,4 @@
-/// <reference path="../Website/p5.global-mode.d.ts" />
+/// <reference path="p5.global-mode.d.ts" />
 let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type
 let state2 = "STANDBY"
 let txt = []

@@ -160,7 +160,7 @@ function setup() {
     minuteRecH.size(canvasW/7, canvasH/12)
     minuteRecH.mouseClicked(minuteRecButtonH)
 
-    instructions = createButton("Help")
+    instructions = createButton("Reference")
     instructions.position(divWidth/2 + canvasW/2 - canvasW/7, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     instructions.size(canvasW/7, canvasH/12)
     instructions.mouseClicked(helpButton)
@@ -292,7 +292,7 @@ function draw() {
             background("#faf0fc")
             fill("#2e292e")
             textSize(canvasW/6.4)
-            text("You Lose", canvasW/2, canvasH/2)
+            text("Try Again", canvasW/2, canvasH/2)
             textSize(canvasW/15)
             text(shuffledArray.length - arrayCounter, canvasW/2, canvasH/2 + canvasH/5)
             textSize(canvasW/50)

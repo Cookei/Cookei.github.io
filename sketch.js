@@ -1,5 +1,5 @@
 /// <reference path="p5.global-mode.d.ts" />
-let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type, instructions
+let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type, instructions, tentenMaru
 let state2 = "STANDBY"
 let txt = []
 let sixty = 60
@@ -136,6 +136,59 @@ let hiraganaLibrary = {
     "を": ["wo"]
 }
 
+let tentenMaruLibrary = {
+    "が": ["ga"],
+    "ぎ": ["gi"],
+    "ぐ": ["gu"],
+    "げ": ["ge"],
+    "ご": ["go"],
+    "ざ": ["za"],
+    "じ": ["ji"],
+    "ず": ["zu"],
+    "ぜ": ["ze"],
+    "ぞ": ["zo"],
+    "だ": ["da"],
+    "ぢ": ["ji"],
+    "づ": ["zu"],
+    "で": ["de"],
+    "ど": ["do"],
+    "ば": ["ba"],
+    "び": ["bi"],
+    "ぶ": ["bu"],
+    "べ": ["be"],
+    "ぼ": ["bo"],
+    "ぱ": ["pa"],
+    "ぴ": ["pi"],
+    "ぷ": ["pu"],
+    "ぺ": ["pe"],
+    "ぽ": ["po"],
+    "ガ": ["ga"],
+    "ギ": ["gi"],
+    "グ": ["gu"],
+    "ゲ": ["ge"],
+    "ゴ": ["go"],
+    "ザ": ["za"],
+    "ジ": ["ji"],
+    "ズ": ["zu"],
+    "ゼ": ["ze"],
+    "ゾ": ["zo"],
+    "ダ": ["da"],
+    "ヂ": ["ji"],
+    "ヅ": ["zu"],
+    "デ": ["de"],
+    "ド": ["do"],
+    "バ": ["ba"],
+    "ビ": ["bi"],
+    "ブ": ["bu"],
+    "ベ": ["be"],
+    "ボ": ["bo"],
+    "パ": ["pa"],
+    "ピ": ["pi"],
+    "プ": ["pu"],
+    "ペ": ["pe"],
+    "ポ": ["po"]
+}
+
 function setup() {
     state = "STARTUP"
     rectMode(CENTER)
@@ -165,8 +218,23 @@ function setup() {
     instructions.size(canvasW/7, canvasH/12)
     instructions.mouseClicked(helpButton)
 
+    tentenMaru = createButton("120s Ten Ten and Maru ALL")
+    tentenMaru.position(divWidth/2 - canvasW/2 + canvasW/7 * 2 + canvasW/38.4 * 2, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    tentenMaru.size(canvasW/7, canvasH/12)
+    tentenMaru.mouseClicked(tentenMaruButton)
+
     textAlign(CENTER)
     textLeading(30)
+}
+
+function tentenMaruButton() {
+    if (state == "TIMEDSEC") {
+        state2 = "STANDBY"
+    }
+    state2 = "STANDBY"
+    state = "TIMEDSEC"
+    type = "TENTENMARU"
+    sixty = 120
 }
 
 function helpButton() {
@@ -178,21 +246,23 @@ function helpButton() {
 }
 
 function minuteRecButtonH() {
-    if (state == "60SEC") {
+    if (state == "TIMEDSEC") {
         state2 = "STANDBY"
     }
     state2 = "STANDBY"
-    state = "60SEC"
+    state = "TIMEDSEC"
     type = "HIRAGANA"
+    sixty = 60
 }
 
 function minuteRecButtonK() {
-    if (state == "60SEC") {
+    if (state == "TIMEDSEC") {
         state2 = "STANDBY"
     }
     state2 = "STANDBY"
-    state = "60SEC"
+    state = "TIMEDSEC"
     type = "KATAKANA"
+    sixty = 60
 }
 
 function draw() {
@@ -212,7 +282,7 @@ function draw() {
         textSize(canvasW/30.72)
         text("れんしゅう", canvasW/2, canvasH/2 + canvasH/5)
     }
-    else if (state == "60SEC") {
+    else if (state == "TIMEDSEC") {
         if (state2 == "STANDBY") {
             background("#faf0fc")
             textSize(canvasW/6.4)
@@ -249,6 +319,9 @@ function draw() {
             }
             else if (type == "HIRAGANA") {
                 pickedLibrary = hiraganaLibrary
+            }
+            else if (type == "TENTENMARU") {
+                pickedLibrary = tentenMaruLibrary
             }
 
             for (let char in pickedLibrary) {
@@ -388,7 +461,7 @@ function shuffleArray(array) {
 }
 
 function mouseClicked() {
-    if (state == "60SEC" && state2 == "STANDBY" && onCanvas) {
+    if (state == "TIMEDSEC" && state2 == "STANDBY" && onCanvas) {
         state2 = "INGAME"
         timer = millis() + (sixty * 1000)
         millis1 = millis() + 1000
@@ -401,6 +474,11 @@ function mouseClicked() {
         }
         else if (type == "HIRAGANA") {
             for (let char in hiraganaLibrary) {
+                keyA.push(char)
+            }
+        }
+        else if (type == "TENTENMARU") {
+            for (let char in tentenMaruLibrary) {
                 keyA.push(char)
             }
         }
@@ -428,6 +506,9 @@ function windowResized() {
     
     instructions.position(divWidth/2 + canvasW/2 - canvasW/7, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     instructions.size(canvasW/7, canvasH/12)
+
+    tentenMaru.position(divWidth/2 - canvasW/2 + canvasW/7 * 2 + canvasW/38.4 * 2, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    tentenMaru.size(canvasW/7, canvasH/12)
 
     scrollLoc = (canvasH/11.375 + canvasH/0.85) * r
 }

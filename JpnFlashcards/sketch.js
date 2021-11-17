@@ -214,7 +214,7 @@ let Ch4KanjiPt1Library = {
     "昨日": ["kinou"],
     "暑い": ["atsui"],
     "寒い": ["samui"],
-    "空": ["sora"],
+    "空": ["sora"]
 }
 
 function setup() {

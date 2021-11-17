@@ -1,5 +1,5 @@
 /// <reference path="p5.global-mode.d.ts" />
-let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type, instructions, tentenMaru
+let divMain, divWidth, divHeight, canvasW, canvasH, canvas, minuteRecK, state, font, onCanvas, timer, millis1, sec, shuffledArray, arrayCounter, type, instructions, tentenMaru, ch4KanjiPt1
 let state2 = "STANDBY"
 let txt = []
 let sixty = 60
@@ -189,6 +189,34 @@ let tentenMaruLibrary = {
     "ポ": ["po"]
 }
 
+let Ch4KanjiPt1Library = {
+    "天気": ["tenki"],
+    "雨": ["ame"],
+    "雪": ["yuki"],
+    "百度": ["hyakudo"],
+    "風": ["kaze"],
+    "東": ["higashi"],
+    "西": ["nishi"],
+    "北": ["kita"],
+    "高い": ["takai"],
+    "高校": ["koukou"],
+    "高校生": ["koukousei"],
+    "多い": ["ooi"],
+    "台風": ["taifuu", "taihuu"],
+    "一番": ["ichiban"],
+    "春": ["haru"],
+    "夏": ["natsu"],
+    "秋": ["aki"],
+    "冬": ["fuyu"],
+    "少ない": ["sukunai"],
+    "強い": ["tsuyoi"],
+    "弱い": ["yowai"],
+    "昨日": ["kinou"],
+    "暑い": ["atsui"],
+    "寒い": ["samui"],
+    "空": ["sora"],
+}
+
 function setup() {
     state = "STARTUP"
     rectMode(CENTER)
@@ -213,18 +241,33 @@ function setup() {
     minuteRecH.size(canvasW/7, canvasH/12)
     minuteRecH.mouseClicked(minuteRecButtonH)
 
+    tentenMaru = createButton("120s Ten Ten and Maru ALL")
+    tentenMaru.position(divWidth/2 - canvasW/2 + canvasW/7 * 2 + canvasW/38.4 * 2, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    tentenMaru.size(canvasW/7, canvasH/12)
+    tentenMaru.mouseClicked(tentenMaruButton)
+    
+    ch4KanjiPt1 = createButton("Ch 4 Kanji #1-25")
+    ch4KanjiPt1.position(divWidth/2 - canvasW/2 + canvasW/7 * 3 + canvasW/38.4 * 3, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    ch4KanjiPt1.size(canvasW/7, canvasH/12)
+    ch4KanjiPt1.mouseClicked(ch4KanjiPt1Button)
+    
     instructions = createButton("Reference")
     instructions.position(divWidth/2 + canvasW/2 - canvasW/7, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     instructions.size(canvasW/7, canvasH/12)
     instructions.mouseClicked(helpButton)
 
-    tentenMaru = createButton("120s Ten Ten and Maru ALL")
-    tentenMaru.position(divWidth/2 - canvasW/2 + canvasW/7 * 2 + canvasW/38.4 * 2, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
-    tentenMaru.size(canvasW/7, canvasH/12)
-    tentenMaru.mouseClicked(tentenMaruButton)
-
     textAlign(CENTER)
     textLeading(30)
+}
+
+function ch4KanjiPt1Button() {
+    if (state == "TIMEDSEC") {
+        state2 = "STANDBY"
+    }
+    state2 = "STANDBY"
+    state = "TIMEDSEC"
+    type = "CH4 Kanji Pt1"
+    sixty = 60
 }
 
 function tentenMaruButton() {
@@ -322,6 +365,9 @@ function draw() {
             }
             else if (type == "TENTENMARU") {
                 pickedLibrary = tentenMaruLibrary
+            }
+            else if (type == "CH4 Kanji Pt1") {
+                pickedLibrary = Ch4KanjiPt1Library
             }
 
             for (let char in pickedLibrary) {

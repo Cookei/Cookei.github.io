@@ -555,6 +555,11 @@ function windowResized() {
 
     tentenMaru.position(divWidth/2 - canvasW/2 + canvasW/7 * 2 + canvasW/38.4 * 2, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
     tentenMaru.size(canvasW/7, canvasH/12)
+    
+    ch4KanjiPt1 = createButton("Ch 4 Kanji #1-25")
+    ch4KanjiPt1.position(divWidth/2 - canvasW/2 + canvasW/7 * 3 + canvasW/38.4 * 3, (divHeight/2 - canvasH/2) - (canvasH/12 * 1.5))
+    ch4KanjiPt1.size(canvasW/7, canvasH/12)
+    ch4KanjiPt1.mouseClicked(ch4KanjiPt1Button)
 
     scrollLoc = (canvasH/11.375 + canvasH/0.85) * r
 }

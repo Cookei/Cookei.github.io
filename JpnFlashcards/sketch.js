@@ -528,6 +528,11 @@ function mouseClicked() {
                 keyA.push(char)
             }
         }
+        else if (type == "CH4 Kanji Pt1") {
+            for (let char in Ch4KanjiPt1Library) {
+                keyA.push(char)
+            }
+        }
         shuffledArray = shuffleArray(keyA)
         arrayCounter = 0
         txt = []

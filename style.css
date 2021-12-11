@@ -1,0 +1,18 @@
+body {
+    font-family: "Noto Sans JP";
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+.blurb {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 40%;
+}
+.blurb p {
+    padding: 5%;
+    line-height: 2;
+}

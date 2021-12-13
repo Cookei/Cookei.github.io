@@ -1,27 +1,47 @@
 body {
     font-family: "Noto Sans JP";
-    background-color: aliceblue;
+    /* background-color: #F0F8FF; */
+    background: linear-gradient(0deg, #FCBF49, #F0F8FF);
+    font-size: 2.5ch;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+.flex {
+    display: flex;
 }
 .blurb {
     margin: auto;
     text-align: center;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 40%;
-    outline: black solid 1px;
+    width: 90%;
+    
 }
-.blurb p {
-    padding: 5%;
+.blurb div {
+    background-color: rgba(255, 255, 255, 0.438);
+    border-radius: 1rem;
+    margin: 7%;
+}
+.blurb div p {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
     line-height: 2;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.blurb img {
+    width: 45%;
+    height: auto;
+    border-radius: 2rem;
 }
 .title {
     text-align: center;
     font-size: 5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
 }
 .works {
     margin: auto;
@@ -31,7 +51,8 @@ body {
     width: 75%;
 }
 .card {
-    background-color: white;
+    text-align: center;
+    background-color: #FFF8EB;
     border-radius: 1rem;
     transition: all 75ms ease;
 }
@@ -43,6 +64,7 @@ body {
 }
 .card .card-body {
     padding: 1em;
+    text-align: left;
 }
 .card img{
     width: 100%;

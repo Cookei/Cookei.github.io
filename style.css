@@ -2,17 +2,50 @@ body {
     font-family: "Noto Sans JP";
     background-color: aliceblue;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 .blurb {
+    margin: auto;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
     width: 40%;
+    outline: black solid 1px;
 }
 .blurb p {
     padding: 5%;
     line-height: 2;
+}
+.title {
+    text-align: center;
+    font-size: 5rem;
+}
+.works {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5%;
+    width: 75%;
+}
+.card {
+    background-color: white;
+    border-radius: 1rem;
+    transition: all 75ms ease;
+}
+.card:hover {
+    box-shadow: 0 0 1rem rgb(27, 27, 27);
+}
+.card h1 {
+    padding: 1rem;
+}
+.card .card-body {
+    padding: 1em;
+}
+.card img{
+    width: 100%;
+    height: auto;
+    padding: 0;
 }

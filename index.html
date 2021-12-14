@@ -2,6 +2,8 @@
 <head>
     <title>Han Li</title>
     <link rel = "stylesheet" href = "style.css">
+    <script src = "index.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -29,31 +31,35 @@
     <div>
         <section style = "margin: 5%;">
             <h1 class = "title">Featured</h1>
-            <div class = "works">
+            <div class = "works-before" id = "featured">
                 <div class = "card">
-                    <h1>JpnFlashcards</h1>
-                    <img src = "assets/photos/JpnFlashcards/JpnFlashcardsCover.PNG" alt  = "Japanese Flashcards Cover">
-                    <img src = "assets/photos/JpnFlashcards/JpnFlashcardsGif.gif" alt  = "Japanese Flashcards Gameplay">
-                    <div class = "card-body">
-                        <ul>
-                            <li>
-                                <h2>Built With</h2>
-                                <p>p5.js, html, css</p>
-                            </li>
-                            <li>
-                                <h2>Genre</h2>
-                                <p>Education, studying, language</p>
-                            </li>
-                            <li>
-                                <h2>Timeline</h2>
-                                <p>2020 - 2021</p>
-                            </li>
-                        </ul>
-                    </div>
+                        <h1>JpnFlashcards</h1>
+                        <div>
+                            <img src = "assets/photos/JpnFlashcards/JpnFlashcardsCover.PNG" alt  = "Japanese Flashcards Cover">
+                            <img src = "assets/photos/JpnFlashcards/JpnFlashcardsGif.gif" alt  = "Japanese Flashcards Gameplay">
+                        </div>
+                        <div class = "card-body">
+                            <ul>
+                                <li>
+                                    <h2>Built With</h2>
+                                    <p>p5.js, html, css</p>
+                                </li>
+                                <li>
+                                    <h2>Genre</h2>
+                                    <p>Education, studying, language</p>
+                                </li>
+                                <li>
+                                    <h2>Timeline</h2>
+                                    <p>2020 - 2021</p>
+                                </li>
+                            </ul>
+                        </div>
                 </div>
                 <div class = "card">
                     <h1>3Chess</h1>
-                    <img src = "assets/photos/3Chess/3ChessGif.gif" alt  = "3Chess Gameplay">
+                    <div>
+                        <img src = "assets/photos/3Chess/3ChessGif.gif" alt  = "3Chess Gameplay">
+                    </div>
                     <div class = "card-body">
                         <ul>
                             <li>
@@ -73,7 +79,9 @@
                 </div>
                 <div class = "card">
                     <h1>Rain</h1>
-                    <img src = "assets/photos/Rain/RainGif.gif" alt  = "Rain Gameplay">
+                    <div>
+                        <img src = "assets/photos/Rain/RainGif.gif" alt  = "Rain Gameplay">
+                    </div>
                     <div class = "card-body">
                         <ul>
                             <li>
@@ -93,7 +101,10 @@
                 </div>
                 <div class = "card">
                     <h1>Spire of Ascension</h1>
-                    <img src = "assets/photos/Spire of Ascension/Spire of Ascension Cover.PNG" alt  = "Spire of Ascension Cover">
+                    <div>
+                        <img src = "assets/photos/Spire of Ascension/Spire of Ascension Cover.PNG" alt  = "Spire of Ascension Cover">
+                        <!-- <img src = "assets/photos/Spire of Ascension/Spire of Ascension Cover 2.PNG" alt = "Spire of Ascension Cover 2"> -->
+                    </div>
                     <div class = "card-body">
                         <ul>
                             <li>
@@ -113,7 +124,9 @@
                 </div>
                 <div class = "card">
                     <h1>Endless Encounter</h1>
-                    <img src = "assets/photos/Endless Encounter/Endless Encounter Gif.gif" alt  = "Endless Encounter Gameplay">
+                    <div>
+                        <img src = "assets/photos/Endless Encounter/Endless Encounter Gif.gif" alt  = "Endless Encounter Gameplay">
+                    </div>
                     <div class = "card-body">
                         <ul>
                             <li>
@@ -122,15 +135,18 @@
                             </li>
                             <li>
                                 <h2>Genre</h2>
-                                <p>Bullet Hell, Text-based, progression</p>
+                                <p>Bullet Hell, SHUMP</p>
                             </li>
                             <li>
                                 <h2>Timeline</h2>
-                                <p>2019 - 2020</p>
+                                <p>2017</p>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <button class = "show-all-button">
+                    <h1 >Show All</h1>
+                </button>
             </div>
         </section>
     </div>

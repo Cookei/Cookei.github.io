@@ -43,6 +43,9 @@ body {
     gap: 10%;
     grid-template-columns: 1fr 1fr;
 }
+button:active {
+    transform: translateY(4px);
+}
 .button {
     font-size: 2em;
     width: 200px;
@@ -59,27 +62,73 @@ body {
     background-color: #00A7E1;
     color:rgb(211, 247, 247);
 }
+.show-all-button {
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    color:#06427e;
+    transition: all 75ms ease;
+    width: 100%;
+    height: auto;
+    background-color: #b3d7ec;
+}
+.show-all-button:hover {
+    box-shadow: 0 0 1rem rgba(27, 27, 27, 0.315);
+    background-color: #00A7E1;
+    color:rgb(211, 247, 247);
+}
 .title {
     text-align: center;
     font-size: 5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
 }
-.works {
+.works-before {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5%;
-    width: 75%;
+    width: 65%;
+}
+.works-after {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5%;
+    width: 55%;
 }
 .card {
     text-align: center;
     background-color: #FFF8EB;
+    transition: all 500ms ease;
+    transition: box-shadow 75ms ease;
+    overflow-y: hidden;
     border-radius: 1rem;
-    transition: all 75ms ease;
+    height: 250px;
 }
 .card:hover {
+    cursor: pointer;
     box-shadow: 0 0 1rem rgb(27, 27, 27);
+}
+.card-toggled {
+    overflow-y: visible;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 1rem 1rem 0 0;
+    border-bottom: black solid 3px;
+}
+.card-toggled h1 {
+    grid-row-start: 1;
+    grid-column: span 2;
+}
+.card-toggled div {
+    grid-row-start: 3;
 }
 .card h1 {
     padding: 1rem;

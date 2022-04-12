@@ -1,0 +1,61 @@
+*{
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  background: #fffdfa;
+}
+
+#sketchParent {
+  display: flex;
+  position: relative;
+  justify-content: left;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+#upgradeBar {
+  display: grid;
+}
+
+.cookie {
+  /* 
+  background: url("https://www.seekpng.com/png/full/9-92876_cookie-clipart-kawaii-if-you-give-a-mouse.png") no-repeat center;
+  */
+  /* The backround below is a temporary image for the cookie*/
+  background: url("/assets/cooooook-removebg-preview.png") no-repeat center;
+  background-size: contain;
+  border-radius: 50%;
+  border: none;
+  filter: drop-shadow(0 0 30px rosybrown);
+  transition: border-radius 0.4s,
+              transform 0.1s ease;
+  outline: none;
+}
+.cookie:hover {
+  transform: scale(1.02);
+}
+.cookie.active, .cookie:active {
+  transform: scale(1.08);
+}
+
+.upgradeButton {
+  background: sandybrown;
+  color: black;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  transition: box-shadow 0.2s;
+  outline: none;
+}
+.upgradeButton:hover {
+  box-shadow: 0 0 5px black;
+  transform: scale(1.02);
+}
+.upgradeButton.active, .upgradeButton:active {
+  transform: translateY(5px);
+  
+}

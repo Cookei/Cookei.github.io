@@ -1,8 +1,15 @@
 function preload() {
-  crumbleIMG = loadImage("/assets/Cookie Crumble.png")
-  cookieMonsterBodyIMG = loadImage("/assets/cookie munster hand.png")
-  cookieMonsterHeadIMG = loadImage("/assets/cookie munster face.png")
-  cookieMonsterHeadAngryIMG = loadImage("/assets/cookie munster head angry.png")
+  crumbleIMG = new Image()
+  crumbleIMG.src = "/assets/Cookie Crumble.png"
+
+  cookieMonsterBodyIMG = new Image()
+  cookieMonsterBodyIMG.src = "/assets/cookie munster hand.png"
+
+  cookieMonsterHeadIMG = new Image()
+  cookieMonsterHeadIMG.src = "/assets/cookie munster face.png"
+
+  cookieMonsterHeadAngryIMG = new Image()
+  cookieMonsterHeadAngryIMG.src = "/assets/cookie munster head angry.png"
   soundFormats('mp3');
   //Sound from Zapsplat.com
   COOKIE_CRUNCH = loadSound("/assets/cookie crunch.mp3")

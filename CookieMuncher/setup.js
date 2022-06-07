@@ -1,18 +1,11 @@
 function preload() {
-  crumbleIMG = new Image()
-  crumbleIMG.src = "/assets/Cookie Crumble.png"
-
-  cookieMonsterBodyIMG = new Image()
-  cookieMonsterBodyIMG.src = "/assets/cookie munster hand.png"
-
-  cookieMonsterHeadIMG = new Image()
-  cookieMonsterHeadIMG.src = "/assets/cookie munster face.png"
-
-  cookieMonsterHeadAngryIMG = new Image()
-  cookieMonsterHeadAngryIMG.src = "/assets/cookie munster head angry.png"
-  soundFormats('mp3');
+  crumbleIMG = loadImage("https://raw.githubusercontent.com/Cookei/Cookei.github.io/master/CookieMuncher/assets/Cookie%20Crumble.png")
+  cookieMonsterBodyIMG = loadImage("https://raw.githubusercontent.com/Cookei/Cookei.github.io/master/CookieMuncher/assets/cookie%20munster%20hand.png")
+  cookieMonsterHeadIMG = loadImage("https://raw.githubusercontent.com/Cookei/Cookei.github.io/master/CookieMuncher/assets/cookie%20munster%20face.png")
+  cookieMonsterHeadAngryIMG = loadImage("https://raw.githubusercontent.com/Cookei/Cookei.github.io/master/CookieMuncher/assets/cookie%20munster%20head%20angry.png")
+  // soundFormats('mp3');
   //Sound from Zapsplat.com
-  COOKIE_CRUNCH = loadSound("/assets/cookie crunch.mp3")
+  // COOKIE_CRUNCH = loadSound("assets/cookie crunch.mp3")
 }
 
 function setup() {
@@ -27,6 +20,7 @@ function setup() {
   cookieMonsterHeadIMG.resize(width, height)
   cookieMonsterHeadAngryIMG.resize(width, height)
   monsterX = width/2 + 50
+  console.log(cookieMonsterHeadIMG)
 
   let restartHalfWidth = width / 10
   let restartHalfHeight = width / 18

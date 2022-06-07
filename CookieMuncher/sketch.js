@@ -38,9 +38,9 @@ function draw() {
   if (state == "MENU") {
     background("#f7e9da")
     monsterY = Math.sin(millis() / 400) * 10 + height / 2 - 30
-    drawingContext.drawImage(cookieMonsterHeadIMG, monsterX, monsterY)
-    drawingContext.drawImage(cookieMonsterBodyIMG, width / 2, height / 2)
-    drawingContext.drawImage(cookieMonsterBodyIMG, width / 2, height / 3)
+    image(cookieMonsterHeadIMG, monsterX, monsterY)
+    image(cookieMonsterBodyIMG, width / 2, height / 2)
+    image(cookieMonsterBodyIMG, width / 2, height / 3)
 
     textAlign(CENTER)
     textSize(70)
@@ -52,16 +52,16 @@ function draw() {
     if (timeRemaining > angryTime) {
       fill("black")
       monsterY = Math.sin(millis() / 100) * 10 + height / 2 - 30
-      drawingContext.drawImage(cookieMonsterHeadIMG, monsterX, monsterY)
+      image(cookieMonsterHeadIMG, monsterX, monsterY)
     }
     else {
       fill("blue")
       monsterY = Math.sin(millis() / 25) * 10 + height / 2 - 30
-      drawingContext.drawImage(cookieMonsterHeadAngryIMG, monsterX, monsterY)
+      image(cookieMonsterHeadAngryIMG, monsterX, monsterY)
     }
     text(timeRemaining, width - textWidth(timeRemaining) - 10, textAscent(timeRemaining))
-    drawingContext.drawImage(cookieMonsterBodyIMG, width / 2, height / 2)
-    drawingContext.drawImage(cookieMonsterBodyIMG, width / 2, height / 3)
+    image(cookieMonsterBodyIMG, width / 2, height / 2)
+    image(cookieMonsterBodyIMG, width / 2, height / 3)
 
     noStroke()
     
@@ -105,7 +105,7 @@ function draw() {
         spawnNomParticles()
         let nomNum = chompValue
         cookieCounter += nomNum
-        COOKIE_CRUNCH.play()
+        // COOKIE_CRUNCH.play()
         Particles.push(new pointParticle(createVector(range(textWidth(nomNum), width - textWidth(nomNum)), range(textAscent(nomNum), height / 3)), nomNum))
       }
     }
@@ -119,7 +119,7 @@ function draw() {
         spawnNomParticles()
         let nomNum = nibbleValue
         cookieCounter += nomNum
-        COOKIE_CRUNCH.play()
+        // COOKIE_CRUNCH.play()
         Particles.push(new pointParticle(createVector(range(textWidth(nomNum), width - textWidth(nomNum)), range(textAscent(nomNum), height / 3)), nomNum))
       }
     }
